@@ -1,0 +1,449 @@
+import ast
+import numpy as np
+import onnx
+import torch
+import os
+import json
+import random
+from torch.distributions import Categorical, Normal, kl_divergence
+import torch.nn.intrinsic
+import torch.utils
+import torch.utils.data
+import torch.utils.data.dataset
+import re
+import torch.nn.functional as F
+import torch.nn
+from TreeConvolution.util import prepare_trees
+from onnx import numpy_helper
+from torch.utils.data import DataLoader, Dataset
+
+device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+class TreeVectorDataset(Dataset):
+    def __init__(self, data):
+        self.data = data
+
+    def __len__(self):
+        return len(self.data)
+
+    def __getitem__(self, idx):
+        vector, cost = self.data[idx]
+        return vector, cost
+
+    def append(self, item):
+        self.data.append(item)
+
+
+def get_relative_path(file_name: str, dir: str) -> str:
+    script_dir = os.path.dirname(__file__)
+    file_path = os.path.join(script_dir, dir, file_name)
+    return file_path
+
+
+def left_child(x: tuple) -> tuple:
+    assert isinstance(x, tuple)
+    if len(x) == 1:
+        return None
+    return x[1]
+
+
+def right_child(x: tuple) -> tuple:
+    assert isinstance(x, tuple)
+
+    if len(x) < 3:
+        return None
+    return x[2]
+
+
+def transformer(x: tuple) -> np.array:
+    return np.array(x[0])
+
+def collate(x):
+    trees = []
+    targets = []
+    indexes = []
+
+    for (tree, index), target in x:
+        trees.append(tree)
+        indexes.append(index)
+        targets.append(target)
+
+    #targets = torch.tensor(targets)
+    #return (trees, indexes ), targets
+    return (trees, indexes), targets
+
+def make_dataloader(x: Dataset, batch_size: int) -> DataLoader:
+    #dataloader = DataLoader(x, batch_size=batch_size, drop_last=True, shuffle=True, collate_fn=collate)
+    dataloader = DataLoader(x, batch_size=batch_size, drop_last=True, shuffle=True)
+
+    return dataloader
+
+
+def build_trees(
+    feature: list[tuple[torch.Tensor, torch.Tensor]], device: str
+) -> tuple[torch.Tensor, torch.Tensor]:
+    return prepare_trees(feature, transformer, left_child, right_child)
+
+
+def remove_operator_ids(tree: str):
+    regex_pattern = r'\(((?:[+,-]?\d+(?:,[+,-]?\d+)*)(?:\s*,\s*\(.*?\))*)\)'
+    matches_iterator = re.finditer(regex_pattern, tree)
+
+    for match in matches_iterator:
+        find = match.group().strip('(').strip(')')
+        values = [int(num.strip()) for num in find.split(',')]
+        values[0] = 0
+        replacement = ','.join(map(str, values))
+        tree = tree.replace(find, replacement)
+
+    return tree
+
+
+def generate_latency_map_intersect(path, old_tree_latency_map):
+    new_tree_latency_map = generate_tree_latency_map(path)
+
+    intersect_latency_map = {}
+    key_intersection = {k: old_tree_latency_map[k] for k in old_tree_latency_map if k in new_tree_latency_map}
+
+    for key in key_intersection:
+        if old_tree_latency_map[key][1] > new_tree_latency_map[key][1]:
+            intersect_latency_map[key] = new_tree_latency_map[key]
+        else:
+            intersect_latency_map[key] = old_tree_latency_map[key]
+
+    return intersect_latency_map
+
+
+def load_autoencoder_data(device: str, path: str, retrain_path: str = "", num_ops: int = 43, num_platfs: int = 9) -> tuple[TreeVectorDataset, int, int]:
+    regex_pattern = r'\(((?:[+,-]?\d+(?:,[+,-]?\d+)*)(?:\s*,\s*\(.*?\))*)\)'
+
+    def platform_encodings(optimal_tree: str):
+        matches_iterator = re.finditer(regex_pattern, optimal_tree)
+
+        for match in matches_iterator:
+            in_paranthesis = match.group()
+            find = in_paranthesis.strip('(').strip(')')
+            values = [int(num.strip()) for num in find.split(',')]
+            replacement = ','.join(map(str, values[num_ops:num_ops+num_platfs]))
+            optimal_tree = optimal_tree.replace(in_paranthesis, f"({replacement})", 1)
+
+        return optimal_tree
+
+    trees = []
+    targets = []
+
+    tree_latency_list = generate_tree_latency_list(path)
+
+    if retrain_path != "":
+        tree_latency_list = generate_tree_latency_list(retrain_path)
+
+
+    for tup in tree_latency_list:
+        optimal_tree = platform_encodings(tup[1])
+        tree, optimal_tree = ast.literal_eval(tup[0]), ast.literal_eval(optimal_tree)
+        trees.append(tree)
+        targets.append(optimal_tree)
+
+    print(f"Tree size: {len(trees)}")
+    print(f"Targets size: {len(targets)}")
+
+    assert len(trees) == len(targets)
+    in_dim, out_dim = len(tree[0]), len(optimal_tree[0])
+    x = []
+    trees, indexes = build_trees(trees, device=device)
+    target_trees, target_indexes = build_trees(targets, device=device)
+    target_trees = torch.where((target_trees > 1) | (target_trees < 0), 0, target_trees)
+
+    for i, tree in enumerate(trees):
+        x.append(((tree, indexes[i]), target_trees[i]))
+
+    print(f'Succesfully loaded {len(x)} plans', flush=True)
+    return TreeVectorDataset(x), in_dim, out_dim
+
+
+def load_autoencoder_data_from_str(device: str, data: str, num_ops: int = 43, num_platfs: int = 9) -> tuple[TreeVectorDataset, int, int]:
+    regex_pattern = r'\(((?:[+,-]?\d+(?:,[+,-]?\d+)*)(?:\s*,\s*\(.*?\))*)\)'
+
+    def platform_encodings(optimal_tree: str):
+        matches_iterator = re.finditer(regex_pattern, optimal_tree)
+
+        for match in matches_iterator:
+            in_paranthesis = match.group()
+            find = in_paranthesis.strip('(').strip(')')
+            values = [int(num.strip()) for num in find.split(',')]
+            replacement = ','.join(map(str, values[num_ops:num_ops+num_platfs]))
+            optimal_tree = optimal_tree.replace(in_paranthesis, f"({replacement})", 1)
+
+        return optimal_tree
+
+    trees = []
+    targets = []
+
+    # structure tree -> (exec-plan, latency)
+    tree_latency_map = generate_tree_latency_map_from_str(data)
+
+    for tree, tup in tree_latency_map.items():
+        optimal_tree = platform_encodings(tup[0])
+        tree, optimal_tree = ast.literal_eval(tree), ast.literal_eval(optimal_tree)
+        trees.append(tree)
+        targets.append(optimal_tree)
+
+    print(f"Tree size: {len(trees)}")
+    print(f"Targets size: {len(targets)}")
+
+    assert len(trees) == len(targets)
+    in_dim, out_dim = len(tree[0]), len(optimal_tree[0])
+    x = []
+    trees, indexes = build_trees(trees, device=device)
+    target_trees, _ = build_trees(targets, device=device)
+    target_trees = torch.where((target_trees > 1) | (target_trees < 0), 0, target_trees)
+
+    for i, tree in enumerate(trees):
+        x.append(((tree, indexes[i]), target_trees[i]))
+
+    print(f'Succesfully loaded {len(x)} plans', flush=True)
+    return TreeVectorDataset(x), in_dim, out_dim
+
+def generate_tree_latency_map(path):
+    tree_latency_map = {}
+    with open(path, 'r') as f:
+        for l in f:
+            s = l.split(':')
+            tree, optimal_tree, latency = s[0], s[1], int(s[2].strip())
+            tree, optimal_tree = (
+                remove_operator_ids(tree.strip()),
+                remove_operator_ids(optimal_tree.strip()),
+            )
+
+            if tree in tree_latency_map:
+               if tree_latency_map[tree][1] > latency:
+                   tree_latency_map[tree] = (optimal_tree, latency)
+            else:
+                tree_latency_map[tree] = (optimal_tree, latency)
+    return tree_latency_map
+
+def generate_tree_latency_list(path):
+    tree_latency_list = []
+    with open(path, 'r') as f:
+        for l in f:
+            s = l.split(':')
+            tree, optimal_tree, latency = s[0], s[1], int(s[2].strip())
+            tree, optimal_tree = (
+                remove_operator_ids(tree.strip()),
+                remove_operator_ids(optimal_tree.strip()),
+            )
+            tree_latency_list.append((tree, optimal_tree, latency))
+
+    return tree_latency_list
+
+def generate_tree_latency_map_from_str(plans: str):
+    tree_latency_map = {}
+    for plan in plans:
+        s = plan.split(':')
+        tree, optimal_tree, latency = s[0], s[1], int(s[2].strip())
+        tree, optimal_tree = (
+            remove_operator_ids(tree.strip()),
+            remove_operator_ids(optimal_tree.strip()),
+        )
+
+        if tree in tree_latency_map:
+           if tree_latency_map[tree][1] > latency:
+               tree_latency_map[tree] = (optimal_tree, latency)
+        else:
+           tree_latency_map[tree] = (optimal_tree, latency)
+
+    return tree_latency_map
+
+
+def load_pairwise_data(device: str, path: str) -> tuple[TreeVectorDataset, int, None]:
+    path = get_relative_path('pairwise-encodings.txt', 'Data') if path == None else path
+
+    with open(path, 'r') as f:
+        wayangPlans = {}
+        trees = []
+        pairs_trees = {}
+        for l in f:
+            s = l.split(':')
+            wayangPlan, executionPlan, cost = (
+                remove_operator_ids(s[0].strip()),
+                remove_operator_ids(s[1].strip()),
+                int(s[2].strip()),
+            )
+            executionPlan = ast.literal_eval(executionPlan)
+            trees.append(executionPlan)
+            wayangPlans.setdefault(wayangPlan, []).append((len(trees) - 1, cost))
+
+        print(f'Read {len(wayangPlans)} different WayangPlans', flush=True)
+        in_dim = len(executionPlan[0])
+        trees, indexes = build_trees(trees, device=device)
+
+        for wayangPlan, exTuple in wayangPlans.items():
+            best_plan_index, best_cost = min(exTuple, key=lambda x: x[1])
+            best_tree = ((trees[best_plan_index], indexes[best_plan_index]), best_cost)
+            tuples = []
+            for i, cost in exTuple:
+                if i == best_plan_index:
+                    continue
+                current_tree = ((trees[i], indexes[i]), cost)
+                pair = [best_tree, current_tree]
+                random.shuffle(pair)
+                tuples.append(pair)
+
+            pairs_trees[wayangPlan] = tuples
+
+        pairs = []
+        labels = [0,0]
+        for wayangPlan, pair in pairs_trees.items():
+            for tree1, tree2 in pair:
+                tree1, cost1 = tree1
+                tree2, cost2 = tree2
+                label = 0.0 if cost1 < cost2 else 1.0
+                labels[int(label)] += 1
+                pairs.append(((tree1, tree2), torch.tensor(label).to(device)))
+
+    print(f'Found {len(pairs)} different Wayang pairs and labels {labels}')
+
+    return TreeVectorDataset(pairs), in_dim, None
+
+
+def load_costmodel_data(device: str, path: str) -> tuple[TreeVectorDataset, int, None]:
+    path = get_relative_path('full-encodings.txt', 'Data') if path == None else path
+    trees = []
+    costs = []
+
+    with open(path, 'r') as f:
+        for l in f:
+            s = l.split(':')
+            executionPlan, cost = remove_operator_ids(s[1].strip()), int(s[2].strip())
+            executionPlan = ast.literal_eval(executionPlan)
+            trees.append(executionPlan)
+            costs.append(cost)
+    print(f'Loaded {len(trees)} different trees')
+    in_dim, out_dim = len(executionPlan[0]), None
+    x = []
+    trees, indexes = build_trees(trees, device=device)
+
+    costs = torch.tensor(costs).to(device)
+
+    for i, tree in enumerate(trees):
+        x.append(((tree, indexes[i]), costs[i]))
+
+    return TreeVectorDataset(x), in_dim, out_dim
+
+
+def get_weights_of_model(modelname: str) -> dict:
+    onnx_model = onnx.load(get_relative_path(f'{modelname}.onnx', 'Models'))
+    INTIALIZERS = onnx_model.graph.initializer
+    onnx_weights = {}
+    for initializer in INTIALIZERS:
+        W = numpy_helper.to_array(initializer)
+        onnx_weights[initializer.name] = W
+    return onnx_weights
+
+def get_weights_of_model_by_path(path: str,) -> dict:
+    onnx_model = onnx.load(path)
+    INTIALIZERS = onnx_model.graph.initializer
+    onnx_weights = {}
+    for initializer in INTIALIZERS:
+        W = numpy_helper.to_array(initializer)
+        onnx_weights[initializer.name] = W
+    return onnx_weights
+
+
+def set_weights(weights: dict, model: torch.nn.Module, device: str) -> torch.nn.Module:
+    for name, param in model.named_parameters():
+        if name in weights:
+            param.data = torch.tensor(weights[name].copy())
+    return model
+
+
+def get_data_loaders(data, batch_size, test_data = None, val_data = None):
+    if test_data is None and val_data is None:
+        train_dataset, val_dataset, test_dataset = torch.utils.data.random_split(
+            data, [0.8, 0.1, 0.1]
+        )
+    else:
+        print("Actually using static splits of data")
+        train_dataset = data
+        val_dataset = val_data
+        test_dataset = test_data
+
+    train_loader = make_dataloader(x=train_dataset, batch_size=batch_size)
+    val_loader = make_dataloader(x=val_dataset, batch_size=batch_size)
+    test_loader = make_dataloader(x=test_dataset, batch_size=batch_size)
+    print(f"Train set len: {len(train_loader)}")
+    print(f"Val set len: {len(val_loader)}")
+    print(f"Test set len: {len(test_loader)}")
+
+    return train_loader, val_loader, test_loader
+
+
+def convert_to_json(plans) -> None:
+    l = []
+    for plan in plans:
+        current_plan = {}
+        current_plan['values'] = plan[0].tolist()
+        current_plan['indexes'] = plan[1].tolist()
+        l.append(current_plan)
+    json_data = json.dumps(l)
+    relative_path = get_relative_path('json-plans', 'Data')
+    with open(f'{relative_path}.txt', 'w') as file:
+        file.write(json_data)
+
+def kl_divergence(logvar, mu):
+    return torch.mean(-0.5 * torch.sum(1 + logvar - mu ** 2 - logvar.exp(), dim = 1), dim = 0)
+
+class Beta_Vae_Loss(torch.nn.Module):
+
+    num_iter = 0 # Global static variable to keep track of iterations
+
+    def __init__(
+        self,
+        loss_type: str = "B",
+        beta: float = 1.0,
+        gamma:float = 1000.0,
+        max_capacity: int = 55,
+        Capacity_max_iter: int = 10_000,
+        kld_weight: float = 1,
+    ):
+        super(Beta_Vae_Loss, self).__init__()
+        self.loss_type = loss_type
+        self.beta = beta
+        self.gamma = gamma
+        self.C_max = torch.Tensor([max_capacity])
+        self.C_stop_iter = Capacity_max_iter
+        self.kld_weight = kld_weight
+
+    def forward(self, prediction, target):
+
+
+        recon_x, mu, logvar = prediction
+
+        pred_logits = recon_x
+        target_indices = target.argmax(dim=1)
+
+        if self.loss_type == "B":
+
+            criterion = torch.nn.CrossEntropyLoss()
+            recon_loss = criterion(pred_logits, target)
+
+            kld = -0.5 * torch.sum(1 + logvar - mu.pow(2) - logvar.exp())
+            loss = recon_loss + self.beta * kld
+
+            return {
+                'loss': loss,
+                'recon_loss': recon_loss,
+                'kld': kld,
+                'beta': self.beta
+            }
+        else:
+            self.num_iter += 1
+
+            recon_loss = F.cross_entropy(recon_x, target)
+            kld_loss = torch.mean(-0.5 * torch.sum(1 + logvar - mu ** 2 - logvar.exp(), dim = 1), dim = 0)
+            self.C_max = self.C_max.to(prediction[0].device)
+
+            C = torch.clamp(self.C_max/self.C_stop_iter * self.num_iter * 100, 0, self.C_max.data[0])
+            loss = recon_loss + self.gamma * self.kld_weight * (kld_loss - C).abs()
+
+            return {'loss': loss, 'recon_loss': recon_loss, 'kld': kld_loss, 'beta': self.beta}
