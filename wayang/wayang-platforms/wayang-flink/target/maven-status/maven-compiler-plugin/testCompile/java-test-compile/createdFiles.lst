@@ -1,0 +1,17 @@
+org/apache/wayang/flink/operators/FlinkJoinOperatorTest.class
+org/apache/wayang/flink/operators/FlinkGlobalMaterializedGroupOperatorTest.class
+org/apache/wayang/flink/operators/FlinkFilterOperatorTest.class
+org/apache/wayang/flink/operators/FlinkUnionAllOperatorTest.class
+org/apache/wayang/flink/test/ChannelFactory.class
+org/apache/wayang/flink/operators/FlinkCartesianOperatorTest.class
+org/apache/wayang/flink/operators/FlinkFlatMapOperatorTest.class
+org/apache/wayang/flink/operators/FlinkCoGroupOperatorTest.class
+org/apache/wayang/flink/operators/FlinkCollectionSourceTest.class
+org/apache/wayang/flink/operators/FlinkMaterializedGroupByOperatorTest.class
+org/apache/wayang/flink/operators/FlinkMapPartitionsOperatorTest.class
+org/apache/wayang/flink/operators/FlinkReduceByOperatorTest.class
+org/apache/wayang/flink/operators/FlinkSortOperatorTest.class
+org/apache/wayang/flink/operators/FlinkGlobalReduceOperatorTest.class
+org/apache/wayang/flink/operators/FlinkCountOperatorTest.class
+org/apache/wayang/flink/operators/FlinkDistinctOperatorTest.class
+org/apache/wayang/flink/operators/FlinkOperatorTestBase.class

@@ -1,0 +1,11 @@
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/Giraph.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/mappings/Mappings.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/platform/GiraphPlatform.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/execution/GiraphExecutor.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/Algorithm/PageRankParameters.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/channels/ChannelConversions.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/Algorithm/PageRankAlgorithm.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/mappings/PageRankMapping.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/operators/GiraphPageRankOperator.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/plugin/GiraphPlugin.java
+/var/www/html/wayang-platforms/wayang-giraph/src/main/java/org/apache/wayang/giraph/operators/GiraphExecutionOperator.java

@@ -1,0 +1,13 @@
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/WordCountIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/WayangPlansOperators.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/platform/MyMadeUpPlatform.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/TensorflowIrisIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/GiraphIntegrationIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/FlinkIntegrationIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/RegressionIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/SparkIntegrationIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/WayangPlans.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/FullIntegrationIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/PostgresIntegrationIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/TensorflowIntegrationIT.java
+/var/www/html/wayang-tests-integration/src/test/java/org/apache/wayang/tests/JavaIntegrationIT.java

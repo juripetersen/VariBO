@@ -1,0 +1,12 @@
+org/apache/wayang/api/python/function/WrappedFlatMapDescriptor.class
+org/apache/wayang/api/python/executor/ReaderIterator.class
+org/apache/wayang/api/python/function/WrappedMapPartitionsDescriptor.class
+org/apache/wayang/api/python/function/WrappedReduceDescriptor.class
+org/apache/wayang/api/python/executor/ProcessReceiver.class
+org/apache/wayang/api/python/executor/ProcessFeeder.class
+org/apache/wayang/api/python/function/WrappedTransformationDescriptor.class
+org/apache/wayang/api/python/function/WrappedPythonFunction.class
+org/apache/wayang/api/python/function/WrappedPredicateDescriptor.class
+org/apache/wayang/api/python/executor/PythonProcessCaller.class
+org/apache/wayang/api/python/executor/PythonWorkerManager.class
+org/apache/wayang/api/python/PythonAPI.class

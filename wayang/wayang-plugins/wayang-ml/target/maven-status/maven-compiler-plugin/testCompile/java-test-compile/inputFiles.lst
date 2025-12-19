@@ -1,0 +1,3 @@
+/var/www/html/wayang-plugins/wayang-ml/src/test/java/org/apache/wayang/ml/test/JavaExecutionMLTest.java
+/var/www/html/wayang-plugins/wayang-ml/src/test/java/org/apache/wayang/ml/test/JavaExecutionTestBase.java
+/var/www/html/wayang-plugins/wayang-ml/src/test/java/org/apache/wayang/ml/test/OrtTensorEncoderTest.java

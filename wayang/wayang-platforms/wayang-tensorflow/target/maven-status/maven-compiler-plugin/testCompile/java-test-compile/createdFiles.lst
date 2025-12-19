@@ -1,0 +1,2 @@
+org/apache/wayang/tensorflow/model/TensorflowModelTest.class
+org/apache/wayang/tensorflow/operators/TensorflowOperatorTestBase.class

@@ -1,0 +1,197 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Wayang Platform Apache Flink
+
+
+From: 'an unknown organization'
+  - AWS SDK for Java - Core (https://aws.amazon.com/sdkforjava) com.amazonaws:aws-java-sdk-core:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - AWS Java SDK for AWS KMS (https://aws.amazon.com/sdkforjava) com.amazonaws:aws-java-sdk-kms:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - AWS Java SDK for Amazon S3 (https://aws.amazon.com/sdkforjava) com.amazonaws:aws-java-sdk-s3:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - JMES Path Query library (https://aws.amazon.com/sdkforjava) com.amazonaws:jmespath-java:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - Kryo (https://github.com/EsotericSoftware/kryo/kryo) com.esotericsoftware:kryo:bundle:5.6.2
+    License: 3-Clause BSD License  (https://opensource.org/licenses/BSD-3-Clause)
+  - MinLog (https://github.com/EsotericSoftware/minlog) com.esotericsoftware:minlog:bundle:1.3.1
+    License: 3-Clause BSD License  (https://opensource.org/licenses/BSD-3-Clause)
+  - ReflectASM (https://github.com/EsotericSoftware/reflectasm) com.esotericsoftware:reflectasm:bundle:1.11.9
+    License: 3-Clause BSD License  (https://opensource.org/licenses/BSD-3-Clause)
+  - Kryo (https://github.com/EsotericSoftware/kryo) com.esotericsoftware.kryo:kryo:bundle:2.24.0
+    License: New BSD License  (http://www.opensource.org/licenses/bsd-license.php)
+  - MinLog (http://code.google.com/p/minlog/) com.esotericsoftware.minlog:minlog:jar:1.2
+    License: New BSD License  (http://www.opensource.org/licenses/bsd-license.php)
+  - FindBugs-jsr305 (http://findbugs.sourceforge.net/) com.google.code.findbugs:jsr305:jar:1.3.9
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Gson (https://github.com/google/gson/gson) com.google.code.gson:gson:jar:2.8.9
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - agrona (https://github.com/real-logic/agrona) org.agrona:agrona:jar:1.15.1
+    License: The Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - LZ4 and xxHash (https://github.com/lz4/lz4-java) org.lz4:lz4-java:jar:1.8.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - SnakeYAML Engine (https://bitbucket.org/snakeyaml/snakeyaml-engine) org.snakeyaml:snakeyaml-engine:bundle:2.6
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - SnakeYAML (https://bitbucket.org/snakeyaml/snakeyaml) org.yaml:snakeyaml:bundle:2.0
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - software.amazon.ion:ion-java (https://github.com/amznlabs/ion-java/) software.amazon.ion:ion-java:bundle:1.0.2
+    License: The Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - async-profiler (https://profiler.tools) tools.profiler:async-profiler:jar:2.9
+    License: Apache License Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0)
+
+From: 'ANTLR' (http://www.antlr.org)
+  - ANTLR 4 Runtime (http://www.antlr.org/antlr4-runtime) org.antlr:antlr4-runtime:jar:4.9.1
+    License: The BSD License  (http://www.antlr.org/license.html)
+
+From: 'com.twitter'
+  - chill-java (https://github.com/twitter/chill) com.twitter:chill-java:jar:0.7.6
+    License: Apache 2  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'com.typesafe' (https://github.com/lightbend/config)
+  - config (https://github.com/lightbend/config) com.typesafe:config:bundle:1.4.2
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+
+From: 'FasterXML' (http://fasterxml.com/)
+  - Jackson-annotations (http://github.com/FasterXML/jackson) com.fasterxml.jackson.core:jackson-annotations:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Jackson-core (https://github.com/FasterXML/jackson-core) com.fasterxml.jackson.core:jackson-core:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - jackson-databind (http://github.com/FasterXML/jackson) com.fasterxml.jackson.core:jackson-databind:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Jackson dataformat: CBOR (http://github.com/FasterXML/jackson-dataformats-binary) com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'io.altoo'
+  - akka-kryo-serialization (https://github.com/altoo-ag/akka-kryo-serialization) io.altoo:akka-kryo-serialization_2.12:jar:2.5.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'Joda.org' (http://www.joda.org)
+  - Joda-Time (http://www.joda.org/joda-time/) joda-time:joda-time:jar:2.8.1
+    License: Apache 2  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'Joe Walnes, Henri Tremblay, Leonardo Mesquita'
+  - Objenesis (https://objenesis.org/objenesis) org.objenesis:objenesis:jar:3.4
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'LAMP/EPFL' (https://lamp.epfl.ch/)
+  - Scala Library (https://www.scala-lang.org/) org.scala-lang:scala-library:jar:2.12.18
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+
+From: 'Lightbend Inc.' (https://www.lightbend.com)
+  - akka-actor (https://akka.io/) com.typesafe.akka:akka-actor_2.12:jar:2.6.20
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.html)
+
+From: 'Odysseus Software GmbH' (http://www.odysseus.de/)
+  - Java Unified Expression Language API (http://juel.sourceforge.net/juel-api/) de.odysseus.juel:juel-api:jar:2.2.7
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Java Unified Expression Language Implementation (http://juel.sourceforge.net/juel-impl/) de.odysseus.juel:juel-impl:jar:2.2.7
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'org.scala-lang.modules' (http://www.scala-lang.org/)
+  - scala-collection-compat (http://www.scala-lang.org/) org.scala-lang.modules:scala-collection-compat_2.12:jar:2.9.0
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - scala-java8-compat (http://www.scala-lang.org/) org.scala-lang.modules:scala-java8-compat_2.12:bundle:0.8.0
+    License: BSD 3-clause  (http://opensource.org/licenses/BSD-3-Clause)
+
+From: 'QOS.ch' (http://www.qos.ch)
+  - SLF4J API Module (http://www.slf4j.org) org.slf4j:slf4j-api:jar:1.7.36
+    License: MIT License  (http://www.opensource.org/licenses/mit-license.php)
+
+From: 'Shigeru Chiba, www.javassist.org'
+  - Javassist (http://www.javassist.org/) org.javassist:javassist:bundle:3.24.0-GA
+    License: MPL 1.1  (http://www.mozilla.org/MPL/MPL-1.1.html)    License: LGPL 2.1  (http://www.gnu.org/licenses/lgpl-2.1.html)    License: Apache License 2.0  (http://www.apache.org/licenses/)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - Apache Commons Collections (http://commons.apache.org/collections/) commons-collections:commons-collections:jar:3.2.2
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Commons Logging (http://commons.apache.org/proper/commons-logging/) commons-logging:commons-logging:jar:1.1.3
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons Math (http://commons.apache.org/proper/commons-math/) org.apache.commons:commons-math3:jar:3.4.1
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache HttpClient (http://hc.apache.org/httpcomponents-client) org.apache.httpcomponents:httpclient:jar:4.5.13
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache HttpCore (http://hc.apache.org/httpcomponents-core-ga) org.apache.httpcomponents:httpcore:jar:4.4.13
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'The Apache Software Foundation' (https://www.apache.org/)
+  - Apache Commons CLI (https://commons.apache.org/proper/commons-cli/) commons-cli:commons-cli:jar:1.5.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons Codec (http://commons.apache.org/proper/commons-codec/) commons-codec:commons-codec:jar:1.11
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons IO (https://commons.apache.org/proper/commons-io/) commons-io:commons-io:jar:2.7
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons Compress (https://commons.apache.org/proper/commons-compress/) org.apache.commons:commons-compress:jar:1.18
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons Lang (https://commons.apache.org/proper/commons-lang/) org.apache.commons:commons-lang3:jar:3.12.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons Text (https://commons.apache.org/proper/commons-text) org.apache.commons:commons-text:jar:1.10.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Annotations (https://flink.apache.org/flink-annotations) org.apache.flink:flink-annotations:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Clients (https://flink.apache.org/flink-clients) org.apache.flink:flink-clients:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Connectors : Datagen (https://flink.apache.org/flink-connectors/flink-connector-datagen) org.apache.flink:flink-connector-datagen:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Core (https://flink.apache.org/flink-core) org.apache.flink:flink-core:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Core API (https://flink.apache.org/flink-core-api) org.apache.flink:flink-core-api:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : DataStream : Impl (https://flink.apache.org/flink-datastream) org.apache.flink:flink-datastream:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : DataStream : API (https://flink.apache.org/flink-datastream-api) org.apache.flink:flink-datastream-api:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Connectors : File Sink Common (https://flink.apache.org/flink-connectors/flink-file-sink-common) org.apache.flink:flink-file-sink-common:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Connectors : Hadoop compatibility (https://flink.apache.org/flink-connectors/flink-hadoop-compatibility_2.12) org.apache.flink:flink-hadoop-compatibility_2.12:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : FileSystems : Hadoop FS (https://flink.apache.org/flink-filesystems/flink-hadoop-fs) org.apache.flink:flink-hadoop-fs:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Java (https://flink.apache.org/flink-java) org.apache.flink:flink-java:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Metrics : Core (https://flink.apache.org/flink-metrics/flink-metrics-core) org.apache.flink:flink-metrics-core:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Optimizer (https://flink.apache.org/flink-optimizer) org.apache.flink:flink-optimizer:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Queryable state : Client Java (https://flink.apache.org/flink-queryable-state/flink-queryable-state-client-java) org.apache.flink:flink-queryable-state-client-java:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : RPC : Akka-Loader (https://flink.apache.org/flink-rpc/flink-rpc-akka-loader) org.apache.flink:flink-rpc-akka-loader:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : RPC : Core (https://flink.apache.org/flink-rpc/flink-rpc-core) org.apache.flink:flink-rpc-core:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Runtime (https://flink.apache.org/flink-runtime) org.apache.flink:flink-runtime:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - flink-shaded-asm-9 (http://flink.apache.org/flink-shaded-asm-9) org.apache.flink:flink-shaded-asm-9:jar:9.5-17.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - flink-shaded-guava-31 (http://flink.apache.org/flink-shaded-guava) org.apache.flink:flink-shaded-guava:jar:31.1-jre-17.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - flink-shaded-jackson-2 (http://flink.apache.org/flink-shaded-jackson-parent/flink-shaded-jackson) org.apache.flink:flink-shaded-jackson:jar:2.14.2-17.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - flink-shaded-netty-4 (http://flink.apache.org/flink-shaded-netty) org.apache.flink:flink-shaded-netty:jar:4.1.91.Final-17.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - flink-shaded-zookeeper-3.7 (http://flink.apache.org/flink-shaded-zookeeper-parent/flink-shaded-zookeeper-3) org.apache.flink:flink-shaded-zookeeper-3:jar:3.7.1-17.0
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Flink : Streaming Java (https://flink.apache.org/flink-streaming-java) org.apache.flink:flink-streaming-java:jar:1.20.0
+    License: The Apache Software License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Log4j API (https://logging.apache.org/log4j/2.x/log4j-api/) org.apache.logging.log4j:log4j-api:jar:2.17.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Log4j Core (https://logging.apache.org/log4j/2.x/log4j-core/) org.apache.logging.log4j:log4j-core:jar:2.17.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Wayang Basic (https://wayang.apache.org/wayang-commons/wayang-basic) org.apache.wayang:wayang-basic:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - Wayang Core (https://wayang.apache.org/wayang-commons/wayang-core) org.apache.wayang:wayang-core:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - Wayang Platform Java (https://wayang.apache.org/wayang-platforms/wayang-java) org.apache.wayang:wayang-java:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - wayang-utils-profile-db (https://wayang.apache.org/wayang-commons/wayang-utils-profile-db) org.apache.wayang:wayang-utils-profile-db:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+
+From: 'xerial.org' (http://www.xerial.org/)
+  - Snappy for Java (http://github.com/xerial/snappy-java/) org.xerial.snappy:snappy-java:bundle:1.0.5
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+
+
+

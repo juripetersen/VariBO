@@ -1,0 +1,17 @@
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/operators/PostgresJoinOperator.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/plugin/PostgresPlugin.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/mapping/FilterMapping.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/Postgres.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/operators/PostgresTableSource.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/channels/ChannelConversions.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/mapping/ProjectionMapping.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/mapping/FlattenMapping.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/operators/PostgresGlobalReduceOperator.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/operators/PostgresFilterOperator.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/mapping/GlobalReduceMapping.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/mapping/Mappings.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/mapping/JoinMapping.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/operators/PostgresProjectionOperator.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/platform/PostgresPlatform.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/plugin/PostgresConversionsPlugin.java
+/var/www/html/wayang-platforms/wayang-postgres/src/main/java/org/apache/wayang/postgres/operators/PostgresExecutionOperator.java

@@ -1,0 +1,3 @@
+/var/www/html/wayang-api/wayang-api-sql/src/test/java/org/apache/wayang/api/sql/SqlTest.java
+/var/www/html/wayang-api/wayang-api-sql/src/test/java/org/apache/wayang/api/sql/SqlAPI.java
+/var/www/html/wayang-api/wayang-api-sql/src/test/java/org/apache/wayang/api/sql/SqlToWayangRelTest.java

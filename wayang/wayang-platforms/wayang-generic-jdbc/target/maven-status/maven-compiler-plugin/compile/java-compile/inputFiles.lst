@@ -1,0 +1,14 @@
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/mapping/ProjectionMapping.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/platform/GenericJdbcPlatform.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/operators/GenericJdbcProjectionOperator.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/operators/GenericSqlToStreamOperator.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/mapping/Mappings.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/operators/GenericJdbcExecutionOperator.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/channels/GenericChannelConversions.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/execution/GenericJdbcExecutor.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/plugin/GenericJdbcConversionsPlugin.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/operators/GenericJdbcFilterOperator.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/GenericJdbc.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/mapping/FilterMapping.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/operators/GenericJdbcTableSource.java
+/var/www/html/wayang-platforms/wayang-generic-jdbc/src/main/java/org/apache/wayang/genericjdbc/plugin/GenericJdbcPlugin.java

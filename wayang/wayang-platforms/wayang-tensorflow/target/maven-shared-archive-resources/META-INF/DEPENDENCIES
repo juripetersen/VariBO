@@ -1,0 +1,103 @@
+// ------------------------------------------------------------------
+// Transitive dependencies of this project determined from the
+// maven pom organized by organization.
+// ------------------------------------------------------------------
+
+Wayang Platform Tensorflow
+
+
+From: 'an unknown organization'
+  - AWS SDK for Java - Core (https://aws.amazon.com/sdkforjava) com.amazonaws:aws-java-sdk-core:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - AWS Java SDK for AWS KMS (https://aws.amazon.com/sdkforjava) com.amazonaws:aws-java-sdk-kms:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - AWS Java SDK for Amazon S3 (https://aws.amazon.com/sdkforjava) com.amazonaws:aws-java-sdk-s3:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - JMES Path Query library (https://aws.amazon.com/sdkforjava) com.amazonaws:jmespath-java:jar:1.12.261
+    License: Apache License, Version 2.0  (https://aws.amazon.com/apache2.0)
+  - Gson (https://github.com/google/gson/gson) com.google.code.gson:gson:jar:2.8.9
+    License: Apache-2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Protocol Buffers [Core] (https://developers.google.com/protocol-buffers/protobuf-java/) com.google.protobuf:protobuf-java:bundle:3.19.4
+    License: 3-Clause BSD License  (https://opensource.org/licenses/BSD-3-Clause)
+  - JavaCPP (http://bytedeco.org/javacpp/) org.bytedeco:javacpp:jar:1.5.6
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0)    License: GNU General Public License (GPL) version 2, or any later version  (http://www.gnu.org/licenses/)    License: GPLv2 with Classpath exception  (http://www.gnu.org/software/classpath/license.html)
+  - JavaCPP (http://bytedeco.org/javacpp/) org.bytedeco:javacpp:jar:1.5.6
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0)    License: GNU General Public License (GPL) version 2, or any later version  (http://www.gnu.org/licenses/)    License: GPLv2 with Classpath exception  (http://www.gnu.org/software/classpath/license.html)
+  - JavaCPP (http://bytedeco.org/javacpp/) org.bytedeco:javacpp:jar:1.5.6
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0)    License: GNU General Public License (GPL) version 2, or any later version  (http://www.gnu.org/licenses/)    License: GPLv2 with Classpath exception  (http://www.gnu.org/software/classpath/license.html)
+  - JavaCPP (http://bytedeco.org/javacpp/) org.bytedeco:javacpp:jar:1.5.6
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0)    License: GNU General Public License (GPL) version 2, or any later version  (http://www.gnu.org/licenses/)    License: GPLv2 with Classpath exception  (http://www.gnu.org/software/classpath/license.html)
+  - TensorFlow NdArray Library (https://www.tensorflow.org/ndarray) org.tensorflow:ndarray:jar:0.3.3
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - TensorFlow Core API Library (https://www.tensorflow.org/tensorflow-core/tensorflow-core-api) org.tensorflow:tensorflow-core-api:jar:0.4.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - TensorFlow Core API Library (https://www.tensorflow.org/tensorflow-core/tensorflow-core-api) org.tensorflow:tensorflow-core-api:jar:0.4.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - TensorFlow Core API Library (https://www.tensorflow.org/tensorflow-core/tensorflow-core-api) org.tensorflow:tensorflow-core-api:jar:0.4.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - TensorFlow Core API Library (https://www.tensorflow.org/tensorflow-core/tensorflow-core-api) org.tensorflow:tensorflow-core-api:jar:0.4.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - TensorFlow Core API Library Platform (https://www.tensorflow.org/tensorflow-core/tensorflow-core-platform) org.tensorflow:tensorflow-core-platform:jar:0.4.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - TensorFlow Framework Library (https://www.tensorflow.org/tensorflow-framework) org.tensorflow:tensorflow-framework:jar:0.4.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - SnakeYAML (https://bitbucket.org/snakeyaml/snakeyaml) org.yaml:snakeyaml:bundle:2.0
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - software.amazon.ion:ion-java (https://github.com/amznlabs/ion-java/) software.amazon.ion:ion-java:bundle:1.0.2
+    License: The Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'ANTLR' (http://www.antlr.org)
+  - ANTLR 4 Runtime (http://www.antlr.org/antlr4-runtime) org.antlr:antlr4-runtime:jar:4.9.1
+    License: The BSD License  (http://www.antlr.org/license.html)
+
+From: 'FasterXML' (http://fasterxml.com/)
+  - Jackson-annotations (http://github.com/FasterXML/jackson) com.fasterxml.jackson.core:jackson-annotations:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Jackson-core (https://github.com/FasterXML/jackson-core) com.fasterxml.jackson.core:jackson-core:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - jackson-databind (http://github.com/FasterXML/jackson) com.fasterxml.jackson.core:jackson-databind:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Jackson dataformat: CBOR (http://github.com/FasterXML/jackson-dataformats-binary) com.fasterxml.jackson.dataformat:jackson-dataformat-cbor:bundle:2.10.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'Joda.org' (http://www.joda.org)
+  - Joda-Time (http://www.joda.org/joda-time/) joda-time:joda-time:jar:2.8.1
+    License: Apache 2  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'Odysseus Software GmbH' (http://www.odysseus.de/)
+  - Java Unified Expression Language API (http://juel.sourceforge.net/juel-api/) de.odysseus.juel:juel-api:jar:2.2.7
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Java Unified Expression Language Implementation (http://juel.sourceforge.net/juel-impl/) de.odysseus.juel:juel-impl:jar:2.2.7
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'The Apache Software Foundation' (http://www.apache.org/)
+  - Apache Commons Logging (http://commons.apache.org/proper/commons-logging/) commons-logging:commons-logging:jar:1.2
+    License: The Apache Software License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache HttpClient (http://hc.apache.org/httpcomponents-client) org.apache.httpcomponents:httpclient:jar:4.5.13
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache HttpCore (http://hc.apache.org/httpcomponents-core-ga) org.apache.httpcomponents:httpcore:jar:4.4.13
+    License: Apache License, Version 2.0  (http://www.apache.org/licenses/LICENSE-2.0.txt)
+
+From: 'The Apache Software Foundation' (https://www.apache.org/)
+  - Apache Commons Codec (http://commons.apache.org/proper/commons-codec/) commons-codec:commons-codec:jar:1.11
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons IO (https://commons.apache.org/proper/commons-io/) commons-io:commons-io:jar:2.7
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Commons Lang (https://commons.apache.org/proper/commons-lang/) org.apache.commons:commons-lang3:jar:3.12.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Log4j API (https://logging.apache.org/log4j/2.x/log4j-api/) org.apache.logging.log4j:log4j-api:jar:2.17.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Apache Log4j Core (https://logging.apache.org/log4j/2.x/log4j-core/) org.apache.logging.log4j:log4j-core:jar:2.17.0
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0.txt)
+  - Wayang Basic (https://wayang.apache.org/wayang-commons/wayang-basic) org.apache.wayang:wayang-basic:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - Wayang Core (https://wayang.apache.org/wayang-commons/wayang-core) org.apache.wayang:wayang-core:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - Wayang Platform Java (https://wayang.apache.org/wayang-platforms/wayang-java) org.apache.wayang:wayang-java:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+  - wayang-utils-profile-db (https://wayang.apache.org/wayang-commons/wayang-utils-profile-db) org.apache.wayang:wayang-utils-profile-db:jar:0.7.1
+    License: Apache License, Version 2.0  (https://www.apache.org/licenses/LICENSE-2.0)
+
+
+
+

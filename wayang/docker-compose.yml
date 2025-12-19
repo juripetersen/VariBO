@@ -1,0 +1,162 @@
+name: thesis-wayang
+
+services:
+  base:
+    container_name: thesis-wayang-base
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.base
+    networks:
+        - wayang-network
+
+  app:
+    container_name: thesis-wayang-app
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile.app
+    depends_on:
+      - base
+    ports:
+      - 8888:8888
+    volumes:
+      - ./:/var/www/html
+      - ./data/:/opt/data
+      - ./.m2/repository:/root/.m2/repository
+    tty: true
+    restart: always
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    networks:
+        - wayang-network
+
+  spark-cluster:
+    container_name: apache-wayang-spark-cluster
+    image: bitnami/spark:latest
+    ports:
+      - 9090:8080
+      - 7077:7077
+    volumes:
+       - ./data:/opt/data
+    environment:
+       - SPARK_MODE=master
+       - SPARK_RPC_AUTHENTICATION_ENABLED=no
+       - SPARK_RPC_ENCRYPTION_ENABLED=no
+       - SPARK_RPC_MESSAGE_MAXSIZE=1000
+       - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+       - SPARK_SSL_ENABLED=no
+       - SPARK_USER=spark
+    tty: true
+    networks:
+        - wayang-network
+
+  spark-worker:
+    container_name: apache-wayang-spark-worker
+    image: bitnami/spark:latest
+    volumes:
+       - ./data:/opt/data
+    environment:
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark-cluster:7077
+      - SPARK_WORKER_MEMORY=16G
+      - SPARK_WORKER_CORES=8
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_RPC_MESSAGE_MAXSIZE=1000
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_USER=spark
+    tty: true
+    networks:
+        - wayang-network
+
+  flink-cluster:
+    image: flink:1.20.0-scala_2.12-java11
+    ports:
+      - 7071:7071
+    volumes:
+       - ./data:/opt/data
+    command: jobmanager
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: flink-cluster
+        jobmanager.rpc.port: 6123
+        rest.address: flink-cluster
+        rest.port: 7071
+        jobmanager.memory.process.size: 8g
+        taskmanager.memory.process.size: 8g
+        taskmanager.numberOfTaskSlots: 2
+        parallelism.default: 4
+        pekko.ask.timeout: 100s
+        pekko.lookup.timeout: 100s
+        high-availability: NONE
+        pekko.framesize: 2000m
+        rest.max-content-length: 2097152000
+        rest.client.max-content-length: 2097152000
+        taskmanager.memory.network.fraction: 0.3
+        fs.output.always-create-directory: true
+    networks:
+        - wayang-network
+
+  flink-worker:
+    image: flink:1.20.0-scala_2.12-java11
+    depends_on:
+      - flink-cluster
+    command: taskmanager
+    volumes:
+       - ./data:/opt/data
+    environment:
+      - |
+        FLINK_PROPERTIES=
+        jobmanager.rpc.address: flink-cluster
+        jobmanager.rpc.port: 6123
+        taskmanager.memory.process.size: 8g
+        taskmanager.numberOfTaskSlots: 2
+        parallelism.default: 4
+        pekko.framesize: 2097152000
+        pekko.ask.timeout: 100s
+        pekko.lookup.timeout: 100s
+        task.cancellation.timeout: 120s
+        rest.address: flink-worker
+        rest.port: 7071
+        rest.max-content-length: 2097152000
+        rest.client.max-content-length: 2097152000
+        taskmanager.memory.network.fraction: 0.3
+        fs.output.always-create-directory: true
+    networks:
+        - wayang-network
+
+  tpch:
+    container_name: thesis-wayang-tpch
+    image: scalytics/tpch:latest
+    tty: true
+    volumes:
+      - ./data/:/data
+    networks:
+        - wayang-network
+
+  job:
+      image: postgres:14-alpine
+      container_name: thesis-wayang-job
+      ports:
+        - 5432:5432
+      volumes:
+        - ./scripts:/docker-entrypoint-initdb.d
+        - ./data:/tmp/data
+      environment:
+        - POSTGRES_PASSWORD=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_DB=job
+      tty: true
+      restart: always
+      networks:
+          - wayang-network
+
+networks:
+  wayang-network:

@@ -1,0 +1,16 @@
+org/apache/wayang/genericjdbc/operators/GenericJdbcExecutionOperator.class
+org/apache/wayang/genericjdbc/operators/GenericSqlToStreamOperator.class
+org/apache/wayang/genericjdbc/mapping/ProjectionMapping.class
+org/apache/wayang/genericjdbc/platform/GenericJdbcPlatform.class
+org/apache/wayang/genericjdbc/mapping/FilterMapping.class
+org/apache/wayang/genericjdbc/operators/GenericSqlToStreamOperator$ResultSetIterator.class
+org/apache/wayang/genericjdbc/GenericJdbc.class
+org/apache/wayang/genericjdbc/operators/GenericJdbcProjectionOperator.class
+org/apache/wayang/genericjdbc/channels/GenericChannelConversions.class
+org/apache/wayang/genericjdbc/execution/GenericJdbcExecutor.class
+org/apache/wayang/genericjdbc/plugin/GenericJdbcPlugin.class
+org/apache/wayang/genericjdbc/plugin/GenericJdbcConversionsPlugin.class
+org/apache/wayang/genericjdbc/operators/GenericJdbcTableSource.class
+org/apache/wayang/genericjdbc/operators/GenericJdbcTableSource$1.class
+org/apache/wayang/genericjdbc/mapping/Mappings.class
+org/apache/wayang/genericjdbc/operators/GenericJdbcFilterOperator.class

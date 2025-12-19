@@ -1,0 +1,8 @@
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/operators/test/TestSink.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/operators/test/TestSource.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/function/ProjectionDescriptorTest.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/operators/TextFileSourceTest.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/mapping/ReduceByMappingTest.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/operators/MaterializedGroupByOperatorTest.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/types/RecordTypeTest.java
+/var/www/html/wayang-commons/wayang-basic/src/test/java/org/apache/wayang/basic/model/op/OpTest.java

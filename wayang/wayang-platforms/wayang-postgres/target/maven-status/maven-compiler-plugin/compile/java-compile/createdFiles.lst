@@ -1,0 +1,17 @@
+org/apache/wayang/postgres/mapping/GlobalReduceMapping.class
+org/apache/wayang/postgres/mapping/Mappings.class
+org/apache/wayang/postgres/operators/PostgresProjectionOperator.class
+org/apache/wayang/postgres/plugin/PostgresPlugin.class
+org/apache/wayang/postgres/operators/PostgresFilterOperator.class
+org/apache/wayang/postgres/operators/PostgresTableSource.class
+org/apache/wayang/postgres/mapping/ProjectionMapping.class
+org/apache/wayang/postgres/plugin/PostgresConversionsPlugin.class
+org/apache/wayang/postgres/mapping/JoinMapping.class
+org/apache/wayang/postgres/Postgres.class
+org/apache/wayang/postgres/channels/ChannelConversions.class
+org/apache/wayang/postgres/platform/PostgresPlatform.class
+org/apache/wayang/postgres/mapping/FilterMapping.class
+org/apache/wayang/postgres/operators/PostgresJoinOperator.class
+org/apache/wayang/postgres/operators/PostgresExecutionOperator.class
+org/apache/wayang/postgres/mapping/FlattenMapping.class
+org/apache/wayang/postgres/operators/PostgresGlobalReduceOperator.class

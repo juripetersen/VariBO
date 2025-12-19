@@ -1,0 +1,15 @@
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/SqlToStreamOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/JdbcGlobalReduceOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/JdbcExecutionOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/JdbcProjectionOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/JdbcFilterOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/JdbcTableSource.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/channels/SqlQueryChannel.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/compiler/FunctionCompiler.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/SqlToFlinkDataSetOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/SqlToRddOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/SqlResultInputFormat.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/execution/JdbcExecutor.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/execution/DatabaseDescriptor.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/platform/JdbcPlatformTemplate.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/main/java/org/apache/wayang/jdbc/operators/JdbcJoinOperator.java

@@ -1,0 +1,12 @@
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/executor/ProcessFeeder.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/executor/PythonWorkerManager.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/executor/ReaderIterator.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/PythonAPI.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/function/WrappedMapPartitionsDescriptor.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/executor/ProcessReceiver.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/function/WrappedPythonFunction.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/function/WrappedTransformationDescriptor.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/function/WrappedReduceDescriptor.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/function/WrappedPredicateDescriptor.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/function/WrappedFlatMapDescriptor.java
+/var/www/html/wayang-api/wayang-api-python/src/main/java/org/apache/wayang/api/python/executor/PythonProcessCaller.java

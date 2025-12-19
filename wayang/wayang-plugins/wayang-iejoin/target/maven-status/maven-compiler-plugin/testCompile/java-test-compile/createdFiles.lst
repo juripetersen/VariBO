@@ -1,0 +1,9 @@
+org/apache/wayang/iejoin/operators/SparkIEJoinOperatorTest.class
+org/apache/wayang/iejoin/operators/JavaExecutionOperatorTestBase.class
+org/apache/wayang/iejoin/operators/SparkIEJoinOperatorTest3.class
+org/apache/wayang/iejoin/operators/SparkIEJoinOperatorTest4.class
+org/apache/wayang/iejoin/operators/SparkIESelfJoinOperatorTest.class
+org/apache/wayang/iejoin/test/ChannelFactory.class
+org/apache/wayang/iejoin/operators/SparkIEJoinOperatorTest2.class
+org/apache/wayang/iejoin/operators/JavaIEJoinOperatorTest.class
+org/apache/wayang/iejoin/operators/SparkOperatorTestBase.class

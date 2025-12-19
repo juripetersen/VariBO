@@ -1,7 +1,7 @@
 # Training Queries
 
 - [JOB Training (From lero-on-PostgreSQL)](https://github.com/AlibabaIncubator/Lero-on-PostgreSQL/blob/c22591ea962763d3eac11b56fc231a636ca337b6/lero/reproduce/training_query/job.txt)
-- TPC-H Queries generated with [DataFarm](https://github.com/agora-ecosystem/data-farm) [here](./src/Queries/tpch/)
+- TPC-H Queries generated with [DataFarm](https://github.com/agora-ecosystem/data-farm) [here](./ml/src/Queries/tpch/)
 
 # Datasets
 
@@ -11,7 +11,7 @@ The CSV files used in the paper, which are from May 2013, can be found [here](ht
 - Download the csv files
 - Create a PostgreSQL database with name job
 - Run the .sql scripts in [/src/Queries/imdb/scripts](./src/Queries/imdb/scripts/)
-- JOB light queries 1-70 are located in [/src/Queries/imdb/](./src/Queries/imdb/)
+- JOB light queries 1-70 are located in [/src/Queries/imdb/](./ml/src/Queries/imdb/)
 
 ## TPC-H Dataset
 The CSV files used in the paper can be found [here](https://www.tpc.org/TPC_Documents_Current_Versions/download_programs/tools-download-request6.asp?bm_type=TPC-H&bm_vers=3.0.1&mode=CURRENT-ONLY).
@@ -81,11 +81,11 @@ python init_lsbo.py --model bvae --model-path="src/Models/bvae.onnx" --parameter
 
 
 ## Running benchmarks in Apache Wayang
-The scripts used for running any of the experiments can be found on [GitHub](https://github.com/Mikkel-MJ/incubator-wayang-thesis/tree/main/bin/runners/benchmarks):
-- [TPC-H](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/bin/runners/benchmarks/generatables-runner.sh)
-- [JOB-light](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/bin/runners/benchmarks/imdb-runner.sh)
-- [LSBO exploration](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/bin/runners/benchmarks/lsbo-runner.sh)
-- [Training data generation](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/bin/runners/benchmarks/imdb-encode-runner.sh)
+The scripts used for running any of the experiments can be found [here](./wayang/bin/runners/benchmarks/):
+- [TPC-H](./wayang/bin/bin/runners/benchmarks/generatables-runner.sh)
+- [JOB-light](./wayang/bin/runners/benchmarks/imdb-runner.sh)
+- [LSBO exploration](./wayang/bin/runners/benchmarks/lsbo-runner.sh)
+- [Training data generation](./wayang/bin/runners/benchmarks/imdb-encode-runner.sh)
 
 These scripts have to be modified in order to run on your setup, as they
 are fit for our experiments on the SDU Ucloud HPC.
@@ -97,9 +97,9 @@ clusters and a PostgreSQL database.
 
 **Configuration**
 Three main classes in Apache Wayang are used to execute our experiments:
-- [JOBenchmark.java](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/wayang-plugins/wayang-ml/src/main/java/org/apache/wayang/ml/benchmarks/JOBenchmark.java)
-- [GeneratableBenchmarks.java](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/wayang-plugins/wayang-ml/src/main/java/org/apache/wayang/ml/benchmarks/GeneratableBenchmarks.java)
-- [LSBORunner.java](https://github.com/Mikkel-MJ/incubator-wayang-thesis/blob/main/wayang-plugins/wayang-ml/src/main/java/org/apache/wayang/ml/benchmarks/LSBORunner.java)
+- [JOBenchmark.java](./wayang/wayang-plugins/wayang-ml/src/main/java/org/apache/wayang/ml/benchmarks/JOBenchmark.java)
+- [GeneratableBenchmarks.java](./wayang/wayang-plugins/wayang-ml/src/main/java/org/apache/wayang/ml/benchmarks/GeneratableBenchmarks.java)
+- [LSBORunner.java](./wayang/wayang-plugins/wayang-ml/src/main/java/org/apache/wayang/ml/benchmarks/LSBORunner.java)
 
 All of these hold configurations for Apache Spark and Apache Flink
 clusters and also the PostgreSQL database. These configurations can be

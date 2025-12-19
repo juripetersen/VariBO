@@ -1,0 +1,11 @@
+org/apache/wayang/jdbc/operators/SqlToRddOperatorTest.class
+org/apache/wayang/jdbc/operators/SqlToStreamOperatorTest.class
+org/apache/wayang/jdbc/test/HsqldbJoinOperator.class
+org/apache/wayang/jdbc/test/HsqldbFilterOperator.class
+org/apache/wayang/jdbc/test/HsqldbPlatform.class
+org/apache/wayang/jdbc/execution/JdbcExecutorTest.class
+org/apache/wayang/jdbc/operators/JdbcJoinOperatorTest.class
+org/apache/wayang/jdbc/operators/OperatorTestBase.class
+org/apache/wayang/jdbc/test/HsqldbProjectionOperator.class
+org/apache/wayang/jdbc/operators/JdbcTableSourceTest.class
+org/apache/wayang/jdbc/test/HsqldbTableSource.class
