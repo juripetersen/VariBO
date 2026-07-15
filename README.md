@@ -2,20 +2,24 @@
 
 - [JOB Training (From lero-on-PostgreSQL)](https://github.com/AlibabaIncubator/Lero-on-PostgreSQL/blob/c22591ea962763d3eac11b56fc231a636ca337b6/lero/reproduce/training_query/job.txt)
 - TPC-H Queries generated with [DataFarm](https://github.com/agora-ecosystem/data-farm) [here](./ml/src/Queries/tpch/)
+- STATS Queries [generated](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark/tree/master/workloads/stats_CEB/sub_plan_queries)
 
 # Datasets
 
-## IMDB Dataset (JOB-light)
+## IMDB Dataset (JOB-Complex)
 The CSV files used in the paper, which are from May 2013, can be found [here](http://event.cwi.nl/da/job/imdb.tgz)
 
 - Download the csv files
 - Create a PostgreSQL database with name job
 - Run the .sql scripts in [/src/Queries/imdb/scripts](./src/Queries/imdb/scripts/)
-- JOB light queries 1-70 are located in [/src/Queries/imdb/](./ml/src/Queries/imdb/)
+- JOB-Complex queries are located in [/src/Queries/imdb/](./ml/src/Queries/imdb/complex)
 
 ## TPC-H Dataset
 The CSV files used in the paper can be found [here](https://www.tpc.org/TPC_Documents_Current_Versions/download_programs/tools-download-request6.asp?bm_type=TPC-H&bm_vers=3.0.1&mode=CURRENT-ONLY).
-The test queries run in our experiments are 900-999.
+The test queries run in our experiments are 1-30.
+
+## STATS Dataset
+The CSV files used in the paper can be found [here]([https://www.tpc.org/TPC_Documents_Current_Versions/download_programs/tools-download-request6.asp?bm_type=TPC-H&bm_vers=3.0.1&mode=CURRENT-ONLY](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark/tree/master/datasets/stats_simplified)).
 
 # Usage
 
@@ -23,13 +27,13 @@ The test queries run in our experiments are 900-999.
 
 **Parameters**
 
---model bvae, cost
+--model carbvae, cost
 <br>
 --retrain 'path/to/data', (default) ' '
 <br>
---epochs 10, (default) 100
+--epochs 250, (default) 100
 <br>
---trials 15, (default) 25
+--trials 50, (default) 25
 <br>
 --model-path 'path/to/store/model'
 <br>
@@ -38,14 +42,20 @@ The test queries run in our experiments are 900-999.
 Example use:
 
 ```bash
-python main.py --model bvae --model-path="src/Models/bvae.onnx" --parameters="./src/HyperaparameterLogs/BVAE.json" --trials 50 --epochs 250
+python main.py --model carbvae --model-path="src/Models/carbvae.onnx" --parameters="./src/HyperaparameterLogs/Carbvae.json" --trials 50 --epochs 250
 ```
+
+## Hyperparameters
+Logs of the used hyperparameters can be found [here](./ml/src/HyperparameterLogs). As mentioned in the paper, the following hyperparameters were fixed to values and thus not included in hyperparameter Bayesion optimization: 
+- beta: 1.5
+- gamma: 4
+- delta: 2
 
 ## Running the LSBO loop
 
 **Parameters**
 
---model bvae
+--model carbvae
 <br>
 --trainset 'path/to/data', (default) ' '
 <br>
@@ -71,19 +81,22 @@ exploration
 --zdim 128 - required latent space size of model
 <br>
 --exec 'path/to/wayang-submit' - path to wayang executable
+<br>
+--initialization 'path/to/init-data' - path to this queries initialization data to be loaded (optional)
 
 Example use:
 
 
 ```bash
-python init_lsbo.py --model bvae --model-path="src/Models/bvae.onnx" --parameters="./src/HyperaparameterLogs/BVAE.json" --query="./src/Queries/imdb/1.sql" --steps 1000 --zdim 128
+python init_lsbo.py --model carbvae --model-path="src/Models/carbvae.onnx" --parameters="./src/HyperaparameterLogs/Carbvae.json" --query="./src/Queries/imdb/complex/1.sql" --steps 1000 --zdim 128
 ```
 
 
 ## Running benchmarks in Apache Wayang
 The scripts used for running any of the experiments can be found [here](./wayang/bin/runners/benchmarks/):
 - [TPC-H](./wayang/bin/bin/runners/benchmarks/generatables-runner.sh)
-- [JOB-light](./wayang/bin/runners/benchmarks/imdb-runner.sh)
+- [JOB-Complex](./wayang/bin/runners/benchmarks/imdb-runner.sh)
+- [STATS](./wayang/bin/runners/benchmarks/stats-runner.sh)
 - [LSBO exploration](./wayang/bin/runners/benchmarks/lsbo-runner.sh)
 - [Training data generation](./wayang/bin/runners/benchmarks/imdb-encode-runner.sh)
 
