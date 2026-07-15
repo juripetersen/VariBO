@@ -19,7 +19,7 @@ The CSV files used in the paper can be found [here](https://www.tpc.org/TPC_Docu
 The test queries run in our experiments are 1-30.
 
 ## STATS Dataset
-The CSV files used in the paper can be found [here]([https://www.tpc.org/TPC_Documents_Current_Versions/download_programs/tools-download-request6.asp?bm_type=TPC-H&bm_vers=3.0.1&mode=CURRENT-ONLY](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark/tree/master/datasets/stats_simplified)).
+The CSV files used in the paper can be found [here](https://github.com/Nathaniel-Han/End-to-End-CardEst-Benchmark/tree/master/datasets/stats_simplified).
 
 # Usage
 
