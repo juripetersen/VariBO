@@ -1,0 +1,1 @@
+select count(*) from postgres.comments as c, postgres.votes as v, postgres.badges as b, postgres.users as u where u.id = c.userid and u.id = v.userid and u.id = b.userid and c.score=0 and v.bountyamount>=0 and v.bountyamount<=300 and v.creationdate>=timestamp '2010-07-29 00:00:00' and u.upvotes>=0 and u.upvotes<=18;

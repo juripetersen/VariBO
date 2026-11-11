@@ -1,0 +1,9 @@
+org/apache/wayang/basic/operators/test/TestSource.class
+org/apache/wayang/basic/operators/test/TestSink.class
+org/apache/wayang/basic/operators/TextFileSourceTest.class
+org/apache/wayang/basic/model/op/OpTest.class
+org/apache/wayang/basic/function/ProjectionDescriptorTest$Pojo.class
+org/apache/wayang/basic/types/RecordTypeTest.class
+org/apache/wayang/basic/function/ProjectionDescriptorTest.class
+org/apache/wayang/basic/mapping/ReduceByMappingTest.class
+org/apache/wayang/basic/operators/MaterializedGroupByOperatorTest.class

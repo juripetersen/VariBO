@@ -1,0 +1,3 @@
+org/apache/wayang/api/sql/SqlTest.class
+org/apache/wayang/api/sql/SqlToWayangRelTest.class
+org/apache/wayang/api/sql/SqlAPI.class

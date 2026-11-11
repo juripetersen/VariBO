@@ -1,0 +1,1 @@
+select count(*) from postgres.votes as v, postgres.posts as p, postgres.badges as b, postgres.users as u where u.id = b.userid and u.id = p.owneruserid and p.id = v.postid and p.answercount>=0 and p.answercount<=7 and p.creationdate<=timestamp '2014-09-12 00:03:32' and b."date"<=timestamp '2014-09-11 07:27:36';

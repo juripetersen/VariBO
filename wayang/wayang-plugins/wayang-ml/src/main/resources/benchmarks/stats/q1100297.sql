@@ -1,0 +1,1 @@
+select count(*) from postgres.votes as v, postgres.posts as p, postgres.users as u where v.userid = u.id and p.owneruserid = u.id and p.commentcount>=0 and u.creationdate>=timestamp '2010-12-15 06:00:24';

@@ -1,0 +1,11 @@
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/operators/Sqlite3ProjectionOperator.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/mapping/FilterMapping.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/operators/Sqlite3FilterOperator.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/platform/Sqlite3Platform.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/mapping/Mappings.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/plugin/Sqlite3ConversionPlugin.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/plugin/Sqlite3Plugin.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/channels/ChannelConversions.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/mapping/ProjectionMapping.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/operators/Sqlite3TableSource.java
+/var/www/html/wayang-platforms/wayang-sqlite3/src/main/java/org/apache/wayang/sqlite3/Sqlite3.java

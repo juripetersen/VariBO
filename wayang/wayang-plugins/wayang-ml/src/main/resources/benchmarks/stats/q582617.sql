@@ -1,0 +1,1 @@
+select count(*) from postgres.posthistory as ph, postgres.posts as p, postgres.users as u where p.owneruserid = u.id and ph.userid = u.id and ph.creationdate>=timestamp '2011-05-20 18:43:03' and p.favoritecount<=5 and u.views>=0 and u.upvotes>=0 and u.creationdate>=timestamp '2010-11-27 21:46:49' and u.creationdate<=timestamp '2014-08-18 13:00:22';

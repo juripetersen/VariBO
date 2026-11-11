@@ -1,0 +1,11 @@
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/test/HsqldbPlatform.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/test/HsqldbFilterOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/execution/JdbcExecutorTest.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/operators/SqlToStreamOperatorTest.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/test/HsqldbJoinOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/operators/SqlToRddOperatorTest.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/test/HsqldbTableSource.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/operators/JdbcJoinOperatorTest.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/operators/JdbcTableSourceTest.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/test/HsqldbProjectionOperator.java
+/var/www/html/wayang-platforms/wayang-jdbc-template/src/test/java/org/apache/wayang/jdbc/operators/OperatorTestBase.java

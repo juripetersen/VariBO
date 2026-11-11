@@ -1,0 +1,1 @@
+select count(*) from postgres.posthistory as ph, postgres.posts as p, postgres.users as u, postgres.badges as b where b.userid = u.id and p.owneruserid = u.id and ph.userid = u.id and ph.creationdate>=timestamp '2010-07-27 18:08:19' and ph.creationdate<=timestamp '2014-09-10 08:22:43' and p.posttypeid=2;

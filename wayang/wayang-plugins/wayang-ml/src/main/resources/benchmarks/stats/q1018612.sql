@@ -1,0 +1,1 @@
+select count(*) from postgres.comments as c, postgres.posthistory as ph, postgres.users as u where u.id = c.userid and c.userid = ph.userid and u.reputation>=1 and u.reputation<=487 and u.upvotes<=27 and u.creationdate>=timestamp '2010-10-22 22:40:35' and u.creationdate<=timestamp '2014-09-10 17:01:31';

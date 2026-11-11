@@ -1,0 +1,1 @@
+select count(*) from postgres.badges as b, postgres.posts as p where b.userid = p.owneruserid and b."date"<=timestamp '2014-09-11 08:55:52' and p.answercount>=0 and p.answercount<=4 and p.commentcount>=0 and p.commentcount<=17;

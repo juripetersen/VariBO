@@ -1,0 +1,1 @@
+select count(*) from postgres.comments as c, postgres.postlinks as pl, postgres.posts as p, postgres.users as u, postgres.badges as b where p.id = pl.relatedpostid and p.id = c.postid and u.id = b.userid and u.id = p.owneruserid and c.creationdate<=timestamp '2014-09-08 15:58:08' and p.viewcount>=0 and u.reputation>=1;

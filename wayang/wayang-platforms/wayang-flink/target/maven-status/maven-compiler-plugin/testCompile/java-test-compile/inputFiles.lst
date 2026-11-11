@@ -1,0 +1,17 @@
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkCoGroupOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkUnionAllOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkDistinctOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkOperatorTestBase.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkSortOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkFilterOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkReduceByOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkFlatMapOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkGlobalReduceOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkMaterializedGroupByOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkCollectionSourceTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkCartesianOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkCountOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/test/ChannelFactory.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkJoinOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkGlobalMaterializedGroupOperatorTest.java
+/var/www/html/wayang-platforms/wayang-flink/src/test/java/org/apache/wayang/flink/operators/FlinkMapPartitionsOperatorTest.java

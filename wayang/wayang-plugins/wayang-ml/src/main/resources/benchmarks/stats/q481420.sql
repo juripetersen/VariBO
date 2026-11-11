@@ -1,0 +1,1 @@
+select count(*) from postgres.comments as c, postgres.posts as p, postgres.postlinks as pl where c.userid = p.owneruserid and p.id = pl.postid and c.score=0 and p.creationdate>=timestamp '2010-09-06 00:58:21' and p.creationdate<=timestamp '2014-09-12 10:02:21' and pl.linktypeid=1 and pl.creationdate>=timestamp '2011-07-09 22:35:44';

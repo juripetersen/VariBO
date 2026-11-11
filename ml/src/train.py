@@ -1,0 +1,196 @@
+import torch
+import sys
+import math
+from torch.utils.data import DataLoader
+from torch import Tensor
+from helper import set_weights
+from datetime import datetime
+from OurModels.EncoderDecoder.model import VAE
+from OurModels.EncoderDecoder.bvae import BVAE
+from annealing import Annealer
+from OurModels.EncoderDecoder.betaCVAE.model import BetaCVAE
+from OurModels.EncoderDecoder.carbVAE.model import CarbVAE
+from helper import get_relative_path
+
+def train(
+    model_class,
+    train_data_loader,
+    val_data_loader,
+    test_data_loader,
+    in_dim,
+    out_dim,
+    loss_function,
+    device,
+    parameters,
+    epochs,
+    weights=None,
+) -> tuple[torch.nn.Module, tuple[list[Tensor], list[Tensor]]]:
+    lr = parameters.get("lr", 0.001)
+    gradient_norm = parameters.get("gradient_norm", 1.0)
+    dropout = parameters.get("dropout", 0.1)
+    z_dim = parameters.get("z_dim", 128)
+    weight_decay = parameters.get("weight_decay", 0) #bounds between 0, 0.1
+    batch_size = parameters.get("batch_size" , 1)
+
+    if model_class == BetaCVAE:
+        model = model_class(
+            logical_dim=in_dim, physical_dim=out_dim, hidden_dim=512, latent_dim=z_dim, num_phys_ops=out_dim, dropout=dropout, beta=parameters.get('beta', 1.0)
+        )
+    elif model_class == CarbVAE:
+        model = model_class(
+            logical_dim=in_dim, physical_dim=out_dim, hidden_dim=512, latent_dim=z_dim, num_phys_ops=out_dim, dropout=dropout, beta=parameters.get('beta', 1.0), gamma=parameters.get('gamma', 1.0), delta=parameters.get("delta", 1.0)
+        )
+    else:
+        model = model_class(
+            in_dim=in_dim, out_dim=out_dim, dropout_prob=dropout, z_dim=z_dim
+        )
+
+    if weights:
+        set_weights(weights=weights, model=model, device=device)
+
+    model.to(device)
+
+    if isinstance(model, VAE) or isinstance(model, BVAE):
+        print("Setting model to training mode", flush=True)
+        model.training = True
+
+    print(model.parameters())
+    optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
+    best_val_loss = float(sys.maxsize)
+    best_test_loss = float(sys.maxsize)
+    counter = 0
+    patience = parameters.get("patience", 10)
+    time = datetime.now().strftime("%H:%M:%S")
+    annealing_agent = Annealer(epochs, shape='linear')
+
+    print(
+        f"Starting training model epochs:{epochs} training samples: {len(train_data_loader)} lr:{lr} optimizer:{optimizer.__class__.__name__} gradient norm:{gradient_norm} drop out: {dropout} patience: {patience} at {time}",
+        flush=True,
+    )
+    for epoch in range(epochs):
+        loss_accum = 0
+        model.train()
+
+        if model_class == CarbVAE:
+            for tree, target, latency in train_data_loader:
+                logical_plan = tree
+                physical_plan = target
+                logits, mu, logvar, z = model(logical_plan, physical_plan)
+                loss, recon, kl, attr_l = loss_function(logits, physical_plan, mu, logvar, z, latency)
+                loss_accum += loss.item()
+                optimizer.zero_grad()
+                loss.backward()
+
+            print(f"Epoch {epoch} multi-component loss: {loss}, recon: {recon}, kl: {kl}, attr: {attr_l}", flush=True)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_norm)
+            optimizer.step()
+            annealing_agent.step()
+        else:
+            for tree, target in train_data_loader:
+                if model_class == BetaCVAE:
+                    #TODO: For now, BetaCVAE isn't batched
+                    #This enumerate also doesn't go through all trees correctly
+                    logical_plan = tree
+                    physical_plan = target
+                    logits, mu, logvar = model(logical_plan, physical_plan)
+                    loss, recon, kl = loss_function(logits, physical_plan, mu, logvar)
+                    loss_accum += loss.item()
+                    optimizer.zero_grad()
+                    loss.backward()
+                else:
+                    prediction = model(tree)
+                    loss = loss_function(prediction, target.float())
+                    #loss_accum += loss.item()
+                    loss_accum += loss["loss"].item()
+                    loss_accum = min(loss_accum, sys.maxsize)
+                    #kld = annealing_agent(loss["kld"])
+                    optimizer.zero_grad()
+                    #(loss["loss"] + loss["kld"]).backward()
+                    loss["loss"].backward()
+                    #loss.backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=gradient_norm)
+                optimizer.step()
+                annealing_agent.step()
+
+        assert len(train_data_loader) != 0
+        #loss_accum /= batch_size
+        loss_accum /= len(train_data_loader)
+
+        print(f"Epoch  {epoch} training loss: {loss_accum}", flush=True)
+        val_loss = evaluate(
+            model=model,
+            val_data_loader=val_data_loader,
+            loss_function=loss_function,
+            device=device,
+            batch_size=batch_size,
+        )
+
+        counter += 1
+        if val_loss["loss"] < best_val_loss:
+            print(
+                f"Got better validation loss {val_loss['loss']} than {best_val_loss}",
+                flush=True,
+            )
+            best_val_loss = val_loss["loss"]
+            counter = 0
+
+            # save the intermediate best model
+            torch.save(model.state_dict(), get_relative_path('best_checkpoint.pt', 'Models'))
+
+        if counter > patience:
+            print(
+                f"Early stopping on Epoch {epoch} training loss: {loss_accum} validation loss: {val_loss} model has not improved for {patience} epochs",
+                flush=True,
+            )
+
+            # If this is -1, there was never a succesfull epoch, so don't load anything
+            if epoch - counter > 0:
+                print(f"Loading model from Epoch {epoch - counter} with validation loss: {best_val_loss}")
+                model.load_state_dict(torch.load(get_relative_path('best_checkpoint.pt', 'Models')))
+
+            break
+
+    return model, tree, target
+
+
+def evaluate(
+    model: torch.nn.Module,
+    val_data_loader: DataLoader,
+    loss_function,
+    device: torch.device,
+    batch_size: int,
+) -> float:
+    model.eval()
+    val_loss = 0
+    val_kld = 0
+    if isinstance(model, VAE) or isinstance(model, BVAE):
+        model.training = True
+
+    with torch.no_grad():
+        if isinstance(model, CarbVAE):
+            for tree, target, latency in val_data_loader:
+                logical_plan = tree
+                physical_plan = target
+                logits, mu, logvar, z = model(logical_plan, physical_plan)
+                loss, recon, kl, attr_l = loss_function(logits, physical_plan, mu, logvar, z, latency)
+                val_loss += loss.item()
+        else:
+            for tree, target in val_data_loader:
+                if isinstance(model, BetaCVAE):
+                    logical_plan = tree
+                    physical_plan = target
+                    logits, mu, logvar = model(logical_plan, physical_plan)
+                    loss, recon, kl = loss_function(logits, physical_plan, mu, logvar)
+                    val_loss += loss.item()
+                else:
+                    prediction = model(tree)
+                    loss = loss_function(prediction, target.float())
+                    val_loss += loss["loss"].item()
+
+    assert len(val_data_loader) != 0
+    val_loss /= len(val_data_loader)
+
+    return {
+        "loss": val_loss,
+        #"kld": val_kld
+    }

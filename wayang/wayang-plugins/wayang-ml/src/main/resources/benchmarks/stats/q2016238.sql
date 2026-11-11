@@ -1,0 +1,1 @@
+select count(*) from postgres.comments as c, postgres.posthistory as ph, postgres.votes as v, postgres.posts as p where ph.postid = p.id and c.postid = p.id and v.postid = p.id and c.score=0 and c.creationdate>=timestamp '2010-08-26 06:55:11' and ph.creationdate<=timestamp '2014-09-05 06:39:25' and v.votetypeid=2;

@@ -1,0 +1,11 @@
+org/apache/wayang/sqlite3/operators/Sqlite3ProjectionOperator.class
+org/apache/wayang/sqlite3/plugin/Sqlite3Plugin.class
+org/apache/wayang/sqlite3/Sqlite3.class
+org/apache/wayang/sqlite3/platform/Sqlite3Platform.class
+org/apache/wayang/sqlite3/mapping/Mappings.class
+org/apache/wayang/sqlite3/mapping/ProjectionMapping.class
+org/apache/wayang/sqlite3/operators/Sqlite3FilterOperator.class
+org/apache/wayang/sqlite3/channels/ChannelConversions.class
+org/apache/wayang/sqlite3/mapping/FilterMapping.class
+org/apache/wayang/sqlite3/operators/Sqlite3TableSource.class
+org/apache/wayang/sqlite3/plugin/Sqlite3ConversionPlugin.class

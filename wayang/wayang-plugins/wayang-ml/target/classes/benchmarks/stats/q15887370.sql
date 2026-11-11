@@ -1,0 +1,1 @@
+select count(*) from postgres.tags as t, postgres.posts as p, postgres.users as u, postgres.votes as v, postgres.badges as b where p.id = t.excerptpostid and u.id = v.userid and u.id = b.userid and u.id = p.owneruserid and u.downvotes>=0;

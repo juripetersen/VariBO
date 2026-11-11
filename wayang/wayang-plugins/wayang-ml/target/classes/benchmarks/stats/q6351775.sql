@@ -1,0 +1,1 @@
+select count(*) from postgres.posthistory as ph, postgres.votes as v, postgres.users as u, postgres.badges as b where u.id = b.userid and u.id = ph.userid and u.id = v.userid and v.creationdate<=timestamp '2014-09-10 00:00:00' and u.downvotes>=0 and u.downvotes<=3 and u.upvotes>=0 and u.upvotes<=71 and b."date">=timestamp '2010-07-19 21:54:06';

@@ -1,0 +1,1 @@
+select count(*) from postgres.tags as t, postgres.posts as p, postgres.users as u, postgres.votes as v, postgres.badges as b where u.id = b.userid and u.id = p.owneruserid and u.id = v.userid and p.id = t.excerptpostid and p.commentcount>=0 and p.commentcount<=13 and u.reputation>=1 and b."date"<=timestamp '2014-09-06 17:33:22';
