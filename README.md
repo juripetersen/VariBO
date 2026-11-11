@@ -11,8 +11,8 @@ The CSV files used in the paper, which are from May 2013, can be found [here](ht
 
 - Download the csv files
 - Create a PostgreSQL database with name job
-- Run the .sql scripts in [/src/Queries/imdb/scripts](./wayang/bin/scripts/)
-- JOB-Complex queries are located in [/src/Queries/imdb/](./queries/job/test.sql)
+- Run the .sql scripts in [/wayang/bin/scripts](./wayang/bin/scripts/)
+- JOB-Complex queries are located in [/queries/job/test.sql](./queries/job/test.sql)
 
 ## TPC-H Dataset
 The CSV files used in the paper can be found [here](https://www.tpc.org/TPC_Documents_Current_Versions/download_programs/tools-download-request6.asp?bm_type=TPC-H&bm_vers=3.0.1&mode=CURRENT-ONLY).
